@@ -7,22 +7,18 @@ task :console do
   Pry.start
 end
 
-task :reload! do
+task :reload do
   User.delete_all
   Event.delete_all
   Performer.delete_all
   Venue.delete_all
 
-  mike = User.create(username: "mjd")
-  stage = Event.create(name: "Stagecoach Festival", date: "5-12-2017")
+  User.create(username: "mjd")
+  Event.create(name: "Stagecoach Festival", date: "5-12-2017")
   Event.create(name: "Coachella", date: "4-14-2017")
   Venue.create(name: "Polo Grounds", location: "Indio, CA")
   Performer.create(name: "Arcade Fire")
   Performer.create(name: "Billy Ray Cyrus")
   Performer.create(name: "The Strokes")
-
-  stage.user = mike
-
-
 end
 # Type `rake -T` on your command line to see the available rake tasks.
