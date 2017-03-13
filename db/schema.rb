@@ -10,17 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309163021) do
+ActiveRecord::Schema.define(version: 20170313222523) do
+
+  create_table "event_performers", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "performer_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string  "name"
     t.string  "date"
-    t.integer "user_id"
     t.integer "venue_id"
   end
 
   create_table "performers", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
+  end
+
+  create_table "user_events", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "event_id"
   end
 
