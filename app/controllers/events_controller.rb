@@ -4,6 +4,5 @@ class EventsController < ApplicationController
     "This will show all of the available events."
   end
 
-  
 
 end
