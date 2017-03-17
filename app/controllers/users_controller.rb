@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
   get '/user/:slug' do
-    "This shows the users events he is attending."
+    erb :'users/show'
   end
 
   get '/login' do
-    "This is where you login."
+    erb :'users/login'
   end
 
   get '/signup' do
-    "This is were you signup."
+    erb :'users/create_user'
   end
 
   get '/logout' do
-    "This will log you out."
+    "This will clear the session data and redirct to '/'"
   end
 end
