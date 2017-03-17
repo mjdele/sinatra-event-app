@@ -4,12 +4,16 @@ class UsersController < ApplicationController
     erb :'users/show'
   end
 
+  get '/signup' do
+    erb :'users/create_user'
+  end
+
   get '/login' do
     erb :'users/login'
   end
 
-  get '/signup' do
-    erb :'users/create_user'
+  post '/login' do
+    binding.pry
   end
 
   get '/logout' do
