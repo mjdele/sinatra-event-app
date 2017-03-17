@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "index.erb"
+    "If logged in => events.rb (showing users event) OR if not logged in => home.erb (showing login or signup links); the redirect if logged in might be handled by the 'LOGIN' route"
   end
 
 end
