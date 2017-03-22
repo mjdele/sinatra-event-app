@@ -42,8 +42,9 @@ class UsersController < ApplicationController
 
   get '/logout' do
     if logged_in?
-      session.clear
-      redirect to '/login'
+      session.destroy
+#      redirect to '/login'
+      redirect "/login?error=You have to be logged in to do that"
     else
       redirect to '/'
     end
