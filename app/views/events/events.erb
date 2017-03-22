@@ -1,1 +1,5 @@
-<h1>SHOWS ALL AVAILABLE EVENTS</h1>
+<h1>Welcome to EventCal!  </h1>
+
+<% @events.each do |event| %>
+  <li> <a href="/events/<%= event.id %>"> <%= event.name %>:<%= event.date %> </a></li>
+<% end %>
