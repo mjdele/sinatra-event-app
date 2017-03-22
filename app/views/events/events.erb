@@ -1,5 +1,6 @@
-<h1>Welcome to EventCal!  </h1>
+<h1>Welcome to EventCal!</h1>
+<h2>Here are all of the available events. Click on the event for more information.</h2>
 
 <% @events.each do |event| %>
-  <li> <a href="/events/<%= event.id %>"> <%= event.name %>:<%= event.date %> </a></li>
+  <li> <a href="/events/<%= event.id %>"> <%= event.name %> (<%= event.date %>) </a></li>
 <% end %>
