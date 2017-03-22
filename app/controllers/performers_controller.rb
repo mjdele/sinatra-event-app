@@ -1,0 +1,3 @@
+class PerformersController < ApplicationController
+  
+end

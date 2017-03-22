@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     redirect_if_not_logged_in
     @events = Event.all
 
-    erb :'/events/events'
+    erb :'/events/index'
   end
 
   get '/events/:id' do

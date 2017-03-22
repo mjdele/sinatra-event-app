@@ -8,3 +8,5 @@ use Rack::MethodOverride
 run ApplicationController
 use UsersController
 use EventsController
+use PerformersController
+use VenuesController
