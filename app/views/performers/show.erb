@@ -1,1 +1,6 @@
-<h1>Shows individual performer's events</h1>
+<h2> <%= @performer.name %> </h2>
+
+<h3>Upcoming Events:</h3>
+<% @performer.events.each do |event| %>
+  <li> <a href="/events/<%= event.id %>"> <%= event.name %> (<%= event.date %>) </a></li>
+<% end %>

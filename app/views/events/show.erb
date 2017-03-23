@@ -1,6 +1,6 @@
 <h2> <%= @event.name %> </h2>
 <h3>Date: <%= @event.date %> </h3>
-<h3>Venue: <a href="/venues/<%= @event.venue.id %>"> <%= @event.venue.name %>: <%= @event.venue.location %> </a> </h3>
+<h3>Venue: <a href="/venues/<%= @event.venue.id %>"> <%= @event.venue.name %>, <%= @event.venue.location %> </a> </h3>
 <h3>Performers:</h3>
 <% @event.performers.each do |performer| %>
   <li> <a href="/performers/<%= performer.id %>"> <%= performer.name %> </a></li>
