@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
 
   get '/user/:slug' do
-    erb :'users/show'
+    if current_user == User.find_by_slug(params[:slug])
+      @user = current_user
+      erb :'users/show'
+    else
+      flash[:message] = "You can only access your own My Events page."
+      redirect to '/events'
+    end
   end
 
   get '/signup' do
