@@ -1,1 +1,5 @@
-<h1>Shows all venues</h1>
+<h2>Performers:</h2>
+
+<% @performers.each do |performer| %>
+  <li> <a href="/performers/<%= performer.id %>"> <%= performer.name %> </a></li>
+<% end %>
