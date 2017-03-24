@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       @user = current_user
       erb :'users/show'
     else
-      flash[:message] = "You can only access your own My Events page."
+      flash[:message] = "**You can only access your own My Events page**"
       redirect to "/events"
     end
   end

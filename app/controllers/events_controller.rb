@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   post '/events' do
     current_user.events << Event.find_by_id(params["event"]["id"])
-    binding.pry
+    #add event unless it's already there --> create a condintional
     redirect "/users/#{current_user.slug}"
   end
 
