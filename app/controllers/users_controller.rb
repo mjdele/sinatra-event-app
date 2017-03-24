@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
-  get '/user/:slug' do
+  get '/users/:slug' do
     if current_user == User.find_by_slug(params[:slug])
       @user = current_user
       erb :'users/show'
     else
       flash[:message] = "You can only access your own My Events page."
-      redirect to '/events'
+      redirect to "/events"
     end
   end
 
   get '/signup' do
     if logged_in?
-      redirect to '/events'
+      redirect to "/events"
     else
       erb :'users/create_user'
     end
@@ -20,17 +20,17 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params["username"] == "" || params["password"] == ""
-      redirect to '/signup'
+      redirect to "/signup"
     else
       @user = User.create(params)
       session[:user_id] = @user.id
-      redirect to '/events'
+      redirect to "/events"
     end
   end
 
   get '/login' do
     if logged_in?
-      redirect to '/events'
+      redirect to "/events"
     else
       erb :'users/login'
     end
@@ -40,9 +40,9 @@ class UsersController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to '/events'
+      redirect to "/events"
     else
-      redirect to '/login'
+      redirect to "/login"
     end
   end
 
@@ -50,9 +50,9 @@ class UsersController < ApplicationController
     if logged_in?
       session.destroy
       flash[:message] = "You have been successfully logged out."
-      redirect to '/login'
+      redirect to "/login"
     else
-      redirect to '/'
+      redirect to "/"
     end
   end
 

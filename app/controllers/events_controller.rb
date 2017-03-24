@@ -14,7 +14,8 @@ class EventsController < ApplicationController
 
   post '/events' do
     current_user.events << Event.find_by_id(params["event"]["id"])
-    redirect '/users/#{current_user.slug}'
+    binding.pry
+    redirect "/users/#{current_user.slug}"
   end
 
 
