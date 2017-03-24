@@ -17,9 +17,6 @@ event_list = {
     "Lollapalooza" => {
       :date => "8-3-2017"
     },
-    "Chicago Blues Festival" => {
-      :date => "6-9-2017"
-    },
     "Father John Misty: The Pure Comedy Tour" => {
       :date => "5-5-2017"
     },
@@ -43,8 +40,6 @@ performer_list = {
     "The Strokes" => {
     },
     "Taylor Swift" => {
-    },
-    "B.B. King" => {
     },
     "Chance the Rapper" => {
     },
@@ -78,9 +73,6 @@ venue_list = {
     "Randall's Island Park" => {
       :location => "New York, NY"
     },
-    "Golden Gate Park" => {
-      :location => "San Francisco, CA"
-    },
     "Grant Park" => {
       :location => "Chicago, IL"
     },
@@ -105,23 +97,43 @@ Venue.find_by(name: "Polo Grounds").events << Event.find_by(name: "Coachella")
 Venue.find_by(name: "Polo Grounds").events << Event.find_by(name: "Stagecoach Festival")
 Venue.find_by(name: "Randall's Island Park").events << Event.find_by(name: "Governor's Ball")
 Venue.find_by(name: "Randall's Island Park").events << Event.find_by(name: "Panorama Music Festival")
+Venue.find_by(name: "Great Stage Park").events << Event.find_by(name: "Bonnaroo")
+Venue.find_by(name: "Webster Hall").events << Event.find_by(name: "Father John Misty: The Pure Comedy Tour")
+Venue.find_by(name: "Webster Hall").events << Event.find_by(name: "Spoon: Hot Thoughts Tour")
+Venue.find_by(name: "Grant Park").events << Event.find_by(name: "Lollapalooza")
 
-Event.find_by(name: "Coachella").events << Performer.find_by(name: "Father John Misty")
-Event.find_by(name: "Coachella").events << Performer.find_by(name: "Arcade Fire")
-Event.find_by(name: "Coachella").events << Performer.find_by(name: "The Strokes")
-Event.find_by(name: "Coachella").events << Performer.find_by(name: "LCD Soundsystem")
+Event.find_by(name: "Coachella").performers << Performer.find_by(name: "Father John Misty")
+Event.find_by(name: "Coachella").performers << Performer.find_by(name: "Arcade Fire")
+Event.find_by(name: "Coachella").performers << Performer.find_by(name: "The Strokes")
+Event.find_by(name: "Coachella").performers << Performer.find_by(name: "LCD Soundsystem")
 
-Event.find_by(name: "Stagecoach Festival").events << Performer.find_by(name: "Taylor Swift")
-Event.find_by(name: "Stagecoach Festival").events << Performer.find_by(name: "Billy Ray Cyrus")
-Event.find_by(name: "Stagecoach Festival").events << Performer.find_by(name: "Amy Grant")
+Event.find_by(name: "Stagecoach Festival").performers << Performer.find_by(name: "Taylor Swift")
+Event.find_by(name: "Stagecoach Festival").performers << Performer.find_by(name: "Billy Ray Cyrus")
+Event.find_by(name: "Stagecoach Festival").performers << Performer.find_by(name: "Amy Grant")
 
-Event.find_by(name: "Governor's Ball").events << Performer.find_by(name: "Chance the Rapper")
-Event.find_by(name: "Governor's Ball").events << Performer.find_by(name: "Spoon")
-Event.find_by(name: "Governor's Ball").events << Performer.find_by(name: "The Cults")
+Event.find_by(name: "Governor's Ball").performers << Performer.find_by(name: "Chance the Rapper")
+Event.find_by(name: "Governor's Ball").performers << Performer.find_by(name: "Spoon")
+Event.find_by(name: "Governor's Ball").performers << Performer.find_by(name: "The Cults")
 
-Event.find_by(name: "Panorama Music Festival").events << Performer.find_by(name: "Taylor Swift")
-Event.find_by(name: "Panorama Music Festival").events << Performer.find_by(name: "Arcade Fire")
-Event.find_by(name: "Panorama Music Festival").events << Performer.find_by(name: "LCD Soundsystem")
+Event.find_by(name: "Panorama Music Festival").performers << Performer.find_by(name: "Taylor Swift")
+Event.find_by(name: "Panorama Music Festival").performers << Performer.find_by(name: "Arcade Fire")
+Event.find_by(name: "Panorama Music Festival").performers << Performer.find_by(name: "LCD Soundsystem")
+
+Event.find_by(name: "Spoon: Hot Thoughts Tour").performers << Performer.find_by(name: "Spoon")
+Event.find_by(name: "Spoon: Hot Thoughts Tour").performers << Performer.find_by(name: "The Cults")
+
+Event.find_by(name: "Father John Misty: The Pure Comedy Tour").performers << Performer.find_by(name: "Father John Misty")
+Event.find_by(name: "Father John Misty: The Pure Comedy Tour").performers << Performer.find_by(name: "Amy Grant")
+
+Event.find_by(name: "Lollapalooza").performers << Performer.find_by(name: "Spoon")
+Event.find_by(name: "Lollapalooza").performers << Performer.find_by(name: "LCD Soundsystem")
+Event.find_by(name: "Lollapalooza").performers << Performer.find_by(name: "Arcade Fire")
+
+Event.find_by(name: "Bonnaroo").performers << Performer.find_by(name: "The Strokes")
+Event.find_by(name: "Bonnaroo").performers << Performer.find_by(name: "Taylor Swift")
+Event.find_by(name: "Bonnaroo").performers << Performer.find_by(name: "The Cults")
+
+
 
 
 
