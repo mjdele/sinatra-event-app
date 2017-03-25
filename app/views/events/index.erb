@@ -2,9 +2,11 @@
   <%= flash[:message] %>
 <% end %>
 
-<h1>Welcome to EventCal.</h1>
-<h2>Click on the event for more information.</h2>
+<h1>Welcome to EventCal</h1>
+<h2>Click on event for more information.</h2>
 
 <% @events.each do |event| %>
   <li> <a href="/events/<%= event.id %>"> <%= event.name %> (<%= event.date %>) </a></li>
 <% end %>
+<br>
+<a href="/users/<%= current_user.slug %>"> <input type="submit" value="Go to My Events"> </a>

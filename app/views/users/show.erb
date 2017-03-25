@@ -1,5 +1,7 @@
-<h2>My Events: </h2>
+<h2>Events You're Attending: </h2>
 
 <% @user.events.each do |event| %>
   <li> <a href="/events/<%= event.id %>"> <%= event.name %> (<%= event.date %>) </a></li>
 <% end %>
+<br>
+<a href="/events"> <input type="submit" value="Main Events Page"> </a>
