@@ -1,0 +1,33 @@
+<form action="/events" method="POST">
+  <label>Create a New Event:</label><br>
+  <input type="text" name="event[name]" placeholder="NAME">
+  <input type="text" name="event[date]" placeholder="DATE (MM-DD-YYYY)">
+  <br>
+  <br>
+
+  <label>Choose a Venue:</label> <br>
+  <%Venue.all.each do |venue|%>
+    <input type="checkbox" name="event[venue_ids][]" value="<%=venue.id%>"><%=venue.name%>, <%=venue.location%></input> <br>
+  <%end%>
+  <br>
+
+  <label>Or Create a New Venue:</label><br>
+  <input type="text" name="venue[name]" placeholder="NAME">
+  <input type="text" name="venue[location]" placeholder="LOCATION">
+  <br>
+  <br>
+
+  <label>Add Performers:</label> <br>
+  <%Performer.all.each do |performer|%>
+    <input type="checkbox" name="event[performer_ids][]" value="<%=performer.id%>" ><%=performer.name%></input> <br>
+  <%end%>
+  <br>
+
+  <label>Or Create a New Performer:</label>
+  <input type="text" name="performer[name]" placeholder="NAME"> <br>
+  <br>
+
+  <input type="submit" value="Create New Event">
+</form>
+
+
