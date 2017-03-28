@@ -11,12 +11,22 @@ class EventsController < ApplicationController
   end
 
   post '/events' do
-    @event = Event.create(name: params["event"]["name"], date: params["event"]["date"])
-    @event.performers << Performer.find_or_create_by(name: params["performer"]["name"])
+    @event = Event.new(params[:event])
+    if !params["performer"]["name"].empty?
+      @event.performers << Performer.find_or_create_by(name: params["performer"]["name"])
+    end
+    if !params["venue"]["name"].empty? && !params["venue"]["location"].empty? && !params["event"]["venue_id"]
+      @event.venue = Venue.find_or_create_by(params[:venue])
+    elsif @event.venue.nil?
+      flash[:message] = "***YOU NEED TO DESIGNATE A VENUE FOR YOUR EVENT***"
+      redirect to "/events/new"
+    elsif @event.performers.empty?
+      flash[:message] = "***YOU NEED TO DESIGNATE PERFORMERS FOR YOUR EVENT***"
+      redirect to "/events/new"
+    end
     binding.pry
-    if !!params["event"]["venue_id"] && params["venue"]["name"].empty
-      @event.venue
-    end    
+    @event.save
+    redirect to "/events/#{@event.id}"
   end
 
   get '/events/:id' do

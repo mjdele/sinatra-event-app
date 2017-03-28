@@ -1,7 +1,11 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <form action="/events" method="POST">
   <label>Create a New Event:</label><br>
-  <input type="text" name="event[name]" placeholder="NAME">
-  <input type="text" name="event[date]" placeholder="DATE (MM-DD-YYYY)">
+  <input type="text" name="event[name]" placeholder="NAME" required>
+  <input type="text" name="event[date]" placeholder="DATE (MM-DD-YYYY)" required>
   <br>
   <br>
 
