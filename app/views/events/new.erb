@@ -5,12 +5,12 @@
   <br>
   <br>
 
-  <label>Choose a Venue:</label> <br>
+  <label>Choose an Existing Venue:</label> <br>
   <%Venue.all.each do |venue|%>
-    <input type="checkbox" name="event[venue_ids][]" value="<%=venue.id%>"><%=venue.name%>, <%=venue.location%></input> <br>
+    <input type="radio" name="event[venue_id]" value="<%=venue.id%>"><%=venue.name%>, <%=venue.location%></input> <br>
   <%end%>
-  <br>
 
+  <br>
   <label>Or Create a New Venue:</label><br>
   <input type="text" name="venue[name]" placeholder="NAME">
   <input type="text" name="venue[location]" placeholder="LOCATION">

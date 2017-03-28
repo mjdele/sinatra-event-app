@@ -6,7 +6,7 @@
   <li> <a href="/performers/<%= performer.id %>"> <%= performer.name %> </a></li>
 <% end %>
 
-<form action="/events" method="POST">
+<form action="/events/show" method="POST">
 <input type="hidden" name="event[id]" value="<%= @event.id %>">
 <br>
 <input type="submit" value="Add to My Events">

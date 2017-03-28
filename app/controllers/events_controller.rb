@@ -11,7 +11,12 @@ class EventsController < ApplicationController
   end
 
   post '/events' do
+    @event = Event.create(name: params["event"]["name"], date: params["event"]["date"])
+    @event.performers << Performer.find_or_create_by(name: params["performer"]["name"])
     binding.pry
+    if !!params["event"]["venue_id"] && params["venue"]["name"].empty
+      @event.venue
+    end    
   end
 
   get '/events/:id' do
@@ -20,9 +25,9 @@ class EventsController < ApplicationController
     erb :'/events/show'
   end
 
-  post '/events' do
+  post '/events/show' do
     current_user.events << Event.find_by_id(params["event"]["id"])
-    #add event unless it's already there --> create a condintional
+    #add event unless it's already there --> create a condintional for duplicate events
     redirect "/users/#{current_user.slug}"
   end
 
