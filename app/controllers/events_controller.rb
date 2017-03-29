@@ -24,7 +24,6 @@ class EventsController < ApplicationController
       flash[:message] = "***YOU NEED TO DESIGNATE PERFORMERS FOR YOUR EVENT***"
       redirect to "/events/new"
     end
-    binding.pry
     @event.save
     redirect to "/events/#{@event.id}"
   end
@@ -36,9 +35,14 @@ class EventsController < ApplicationController
   end
 
   post '/events/show' do
-    current_user.events << Event.find_by_id(params["event"]["id"])
-    #add event unless it's already there --> create a condintional for duplicate events
-    redirect "/users/#{current_user.slug}"
+    if !current_user.events.include?(Event.find_by_id(params["event"]["id"]))
+      current_user.events << Event.find_by_id(params["event"]["id"])
+      redirect "/users/#{current_user.slug}"
+    else
+      flash[:message] = "***THAT EVENT HAS ALREADY BEEN ADDED TO YOUR EVENTS PAGE***"
+      redirect to "/events"
+    end
+
   end
 
 
