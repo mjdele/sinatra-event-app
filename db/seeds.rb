@@ -6,19 +6,19 @@ event_list = {
       :date => "05-12-2017"
     },
     "Governor's Ball" => {
-      :date => "06-2-2017"
+      :date => "06-02-2017"
     },
     "Panorama Music Festival" => {
       :date => "07-29-2017"
     },
     "Bonnaroo" => {
-      :date => "06-8-2017"
+      :date => "06-08-2017"
     },
     "Lollapalooza" => {
-      :date => "08-3-2017"
+      :date => "08-03-2017"
     },
     "Father John Misty: The Pure Comedy Tour" => {
-      :date => "05-5-2017"
+      :date => "05-05-2017"
     },
     "Spoon: Hot Thoughts Tour" => {
       :date => "04-23-2017"
