@@ -1,27 +1,27 @@
 event_list = {
     "Coachella" => {
-      :date => "4-14-2017"
+      :date => "04-14-2017"
     },
     "Stagecoach Festival" => {
-      :date => "5-12-2017"
+      :date => "05-12-2017"
     },
     "Governor's Ball" => {
-      :date => "6-2-2017"
+      :date => "06-2-2017"
     },
     "Panorama Music Festival" => {
-      :date => "7-29-2017"
+      :date => "07-29-2017"
     },
     "Bonnaroo" => {
-      :date => "6-8-2017"
+      :date => "06-8-2017"
     },
     "Lollapalooza" => {
-      :date => "8-3-2017"
+      :date => "08-3-2017"
     },
     "Father John Misty: The Pure Comedy Tour" => {
-      :date => "5-5-2017"
+      :date => "05-5-2017"
     },
     "Spoon: Hot Thoughts Tour" => {
-      :date => "4-23-2017"
+      :date => "04-23-2017"
     }
   }
 

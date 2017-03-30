@@ -1,0 +1,35 @@
+<h2>Edit Your Event:</h2>
+
+<form action="/events/<%=@event.id%>" method="POST">
+  <input type="hidden" name="_method" value="patch">
+
+  <label>Event Name and Date:</label><br>
+  <input type="text" name="event[name]" value="<%=@event.name%>" placeholder="NAME" required>
+  <input type="text" name="event[date]" value="<%=@event.date%>" placeholder="DATE (MM-DD-YYYY)" required>
+  <br>
+  <br>
+
+  <label>Edit Current Venue:</label> <br>
+  <%Venue.all.each do |venue|%>
+    <input type="radio" name="event[venue_id]" value="<%=venue.id%>" <%='checked' if @event.venue == venue %>> <%=venue.name%>, <%=venue.location%></input> <br>
+  <%end%>
+
+  <br>
+  <label>Or Create a New Venue:</label><br>
+  <input type="text" name="venue[name]" placeholder="NAME">
+  <input type="text" name="venue[location]" placeholder="LOCATION">
+  <br>
+  <br>
+
+  <label>Edit Performers:</label> <br>
+  <%Performer.all.each do |performer|%>
+    <input type="checkbox" name="event[performer_ids][]" value="<%=performer.id%>" <%='checked' if @event.performers.include?(performer)%>> <%=performer.name%></input> <br>
+  <%end%>
+  <br>
+
+  <label>Or Create a New Performer:</label>
+  <input type="text" name="performer[name]" placeholder="NAME"> <br>
+  <br>
+
+  <input type="submit" value="Save Changes">
+</form>
