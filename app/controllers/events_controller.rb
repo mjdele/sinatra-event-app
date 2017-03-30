@@ -18,22 +18,9 @@ class EventsController < ApplicationController
       @event = Event.new(params[:event])
     end
 
-    if !params["performer"]["name"].empty?
-      @event.performers << Performer.find_or_create_by(name: params["performer"]["name"])
-    elsif @event.performers.empty?
-      flash[:message] = "***YOU NEED TO DESIGNATE PERFORMER(S) FOR YOUR EVENT***"
-      redirect to "/events/new"
-    end
+    venue_input_validation
+    performer_input_validation
 
-    if !params["venue"]["name"].empty? && !params["venue"]["location"].empty? && !params["event"]["venue_id"]
-      @event.venue = Venue.find_or_create_by(params[:venue])
-    elsif !params["venue"]["name"].empty? && !params["venue"]["location"].empty? && params["event"]["venue_id"]
-      flash[:message] = "***YOU CAN ONLY DESIGNATE ONE VENUE FOR YOUR EVENT***"
-      redirect to "/events/new"
-    elsif @event.venue.nil?
-      flash[:message] = "***YOU NEED TO DESIGNATE A VENUE FOR YOUR EVENT***"
-      redirect to "/events/new"
-    end
     @event.save
     redirect to "/events/#{@event.id}"
   end
@@ -51,9 +38,12 @@ class EventsController < ApplicationController
   end
 
   patch '/events/:id' do
-    binding.pry
     @event = Event.find_by_id(params[:id])
+    @event.update(params[:event])
 
+    performer_input_validation
+    @event.save 
+    redirect to "/events/#{@event.id}"
   end
 
   post '/events/show' do

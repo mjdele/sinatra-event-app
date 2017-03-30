@@ -32,6 +32,26 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
 
-  end
+    def performer_input_validation
+      if !params["performer"]["name"].empty?
+        @event.performers << Performer.find_or_create_by(name: params["performer"]["name"])
+      elsif @event.performers.empty?
+        flash[:message] = "***YOU NEED TO DESIGNATE PERFORMER(S) FOR YOUR EVENT***"
+        redirect to "/events/new"
+      end
+    end
 
+    def venue_input_validation
+      if !params["venue"]["name"].empty? && !params["venue"]["location"].empty? && !params["event"]["venue_id"]
+        @event.venue = Venue.find_or_create_by(params[:venue])
+      elsif !params["venue"]["name"].empty? && !params["venue"]["location"].empty? && params["event"]["venue_id"]
+        flash[:message] = "***YOU CAN ONLY DESIGNATE ONE VENUE FOR YOUR EVENT***"
+        redirect to "/events/new"
+      elsif @event.venue.nil?
+        flash[:message] = "***YOU NEED TO DESIGNATE A VENUE FOR YOUR EVENT***"
+        redirect to "/events/new"
+      end
+    end
+
+  end
 end
