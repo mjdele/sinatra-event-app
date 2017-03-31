@@ -34,8 +34,13 @@ class EventsController < ApplicationController
 
   get '/events/:id/edit' do
     redirect_if_not_logged_in
-    @event = Event.find_by_id(params[:id])
-    erb :'/events/edit'
+    if current_user.id == Event.find_by_id(params[:id]).users.first.id
+      @event = Event.find_by_id(params[:id])
+      erb :'/events/edit'
+    else
+      flash[:message] = "***YOU CAN ONLY EDIT EVENTS THAT YOU HAVE CREATED***"
+      redirect to "/events"
+    end
   end
 
   patch '/events/:id' do
@@ -55,8 +60,20 @@ class EventsController < ApplicationController
       flash[:message] = "***THAT EVENT HAS ALREADY BEEN ADDED TO YOUR EVENTS PAGE***"
       redirect to "/events"
     end
-
   end
 
-
+  post '/events/:id/delete' do
+    redirect_if_not_logged_in
+    if current_user.id == Event.find_by_id(params[:id]).users.first.id
+      Event.delete(params[:id])
+      flash[:message] = "***EVENT SUCCESSFULLY DELETED***"
+      redirect to "/events"
+    else
+      flash[:message] = "***YOU CAN ONLY DELETE EVENTS THAT YOU HAVE CREATED***"
+      redirect to "/events"
+    end
+  end
 end
+
+
+
