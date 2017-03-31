@@ -22,7 +22,8 @@ class EventsController < ApplicationController
     performer_input_validation
 
     @event.save
-    redirect to "/events/#{@event.id}"
+    current_user.events << @event
+    redirect "/users/#{current_user.slug}"
   end
 
   get '/events/:id' do

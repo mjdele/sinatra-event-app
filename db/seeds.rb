@@ -133,6 +133,17 @@ Event.find_by(name: "Bonnaroo").performers << Performer.find_by(name: "The Strok
 Event.find_by(name: "Bonnaroo").performers << Performer.find_by(name: "Taylor Swift")
 Event.find_by(name: "Bonnaroo").performers << Performer.find_by(name: "The Cults")
 
+master = User.create(username: "master", password: "getin")
+
+master.events << Event.find_by(name: "Coachella")
+master.events << Event.find_by(name: "Stagecoach Festival")
+master.events << Event.find_by(name: "Governor's Ball")
+master.events << Event.find_by(name: "Panorama Music Festival")
+master.events << Event.find_by(name: "Bonnaroo")
+master.events << Event.find_by(name: "Father John Misty: The Pure Comedy Tour")
+master.events << Event.find_by(name: "Spoon: Hot Thoughts Tour")
+master.events << Event.find_by(name: "Lollapalooza")
+
 
 
 
