@@ -2,5 +2,5 @@
 
 <h3>Upcoming Events:</h3>
 <% @venue.events.each do |event| %>
-  <li> <a href="/events/<%= event.id %>"> <%= event.name %> </a></li>
+  <li> <a href="/events/<%= event.id %>"> <%= event.name %> (<%= event.date %>) </a></li>
 <% end %>
