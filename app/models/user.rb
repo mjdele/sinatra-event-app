@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
-  has_secure_password
   has_many :user_events
   has_many :events, through: :user_events
+
+  has_secure_password
+
+  validates :username, presence: true
+  validates :username, uniqueness: true
 
   def slug
     username.downcase.gsub(" ","-")

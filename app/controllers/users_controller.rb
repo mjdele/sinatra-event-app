@@ -13,18 +13,20 @@ class UsersController < ApplicationController
   get '/signup' do
     if logged_in?
       redirect to "/events"
+
     else
       erb :'users/create_user'
     end
   end
 
   post '/signup' do
-    if params["username"] == "" || params["password"] == ""
-      redirect to "/signup"
-    else
-      @user = User.create(params)
+    @user = User.new(params)
+    if @user.save
       session[:user_id] = @user.id
       redirect to "/events"
+    else 
+      flash[:message] = @user.errors.full_messages.join(", ")
+      redirect to "/signup"
     end
   end
 

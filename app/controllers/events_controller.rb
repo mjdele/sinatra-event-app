@@ -34,8 +34,8 @@ class EventsController < ApplicationController
 
   get '/events/:id/edit' do
     redirect_if_not_logged_in
-    if current_user.id == Event.find_by_id(params[:id]).users.first.id
-      @event = Event.find_by_id(params[:id])
+    @event = Event.find_by_id(params[:id])
+    if @event.users.include?(current_user)
       erb :'/events/edit'
     else
       flash[:message] = "***YOU CAN ONLY EDIT EVENTS THAT YOU HAVE CREATED***"
@@ -45,11 +45,14 @@ class EventsController < ApplicationController
 
   patch '/events/:id' do
     @event = Event.find_by_id(params[:id])
-    @event.update(params[:event])
-
-    performer_input_validation
-    @event.save 
-    redirect to "/events/#{@event.id}"
+    @performer = Performer.find_or_create_by(name: params["performer"]["name"])
+    if @performer.valid?
+      @event.performers << @performer
+      redirect to "/events/#{@event.id}"
+    else 
+      flash[:message] = @performer.errors.full_messages.join(", ")
+      redirect to "/events/#{@event.id}/edit"
+    end
   end
 
   post '/events/show' do
